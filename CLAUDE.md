@@ -47,9 +47,9 @@ For context, I have no coding background but I am willing to understand new term
 
 Format of response:
 1. What have you done
-2. What do you need me to do
-3. (optional) What is the current issue?
-4. (optional) Things to take note of / add-ons at your own discretion
+2. (optional) What is the current issue?
+3. What do you need me to do
+5. (optional) Things to take note of / add-ons at your own discretion
 
 ## Never do
 
