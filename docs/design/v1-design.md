@@ -208,6 +208,17 @@ CLAUDE.md       instructions for Claude Code
 - **Real-device testing:** founder's Android phone first; during closed testing, cover at least Samsung, Xiaomi and one other brand popular in Malaysia (Oppo/Vivo/Huawei).
 - Reviewer-friendly: TypeScript strict mode, linting, consistent formatting, comments explaining *why* for GPS/stat logic.
 
+## 8a. Development & testing workflow [Decided]
+
+Development happens with Claude Code on the founder's **Windows PC**. GPS test drives happen away from the PC's Wi-Fi, so testing uses two modes:
+
+| Mode | When | How |
+| --- | --- | --- |
+| **Desk mode** | Building screens and logic | Development build on the phone, connected to the PC's Metro server over the same Wi-Fi; changes appear in seconds. |
+| **Drive mode** | GPS test drives | A standalone **preview build** (all code bundled, no PC needed). Before a drive, the latest code is pushed to it with EAS Update over the internet. Trips upload to Supabase over mobile data. |
+| **After a drive** | Accuracy analysis | Raw GPS logs of test trips are kept on the phone for 7 days with an **Export log** button (share as a file) so Claude can analyse distance/speed accuracy. |
+| **Replay** | Fixing GPS bugs | Exported drives become test fixtures replayed in automated tests at the desk, so most fixes don't need another drive. |
+
 ## 9. Milestones (~12 weeks) [Claude's call]
 
 | Weeks | Milestone |
