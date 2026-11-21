@@ -34,6 +34,8 @@ Build the code with 3 principles:
 
 When you come across an issue. Try to fix it first (3 attempts max). If unable to solve, present me with the issue and an alternative solution.
 
+Create a separate branch when testing. Keep separate versions.
+
 ## Git & releases
 
 Ask for permission before commiting.
