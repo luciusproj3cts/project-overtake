@@ -38,7 +38,7 @@ Create a separate branch when testing. Keep separate versions.
 
 ## Git & releases
 
-Ask for permission before commiting.
+Ask for permission before commiting large changes (e.g. changing from Supabase to some other platform).
 
 ## How to talk to me
 
@@ -49,7 +49,7 @@ Format of response:
 1. What have you done
 2. (optional) What is the current issue?
 3. What do you need me to do
-5. (optional) Things to take note of / add-ons at your own discretion
+4. (optional) Things to take note of / add-ons at your own discretion
 
 ## Never do
 
