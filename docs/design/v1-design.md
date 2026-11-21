@@ -159,14 +159,16 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 
 - **Profile:** display name, unique username, profile photo (optional), stats summary (total km, total trips).
 - **Visibility [Decided: public profile, private trips]:** other users (e.g. tapping a name on the leaderboard or forum) see display name, username, profile photo, cars, and total km/trips. Individual trips and routes are private to the owner; they only leave the app when the user shares a trip card.
-- **Cars [Decided]:** users can add **multiple cars**, each with photos. Each trip is assigned to a car (default car pre-selected at Start). Each user can have a max of 3 cars.
-- **Car fields [Claude's call]:** make, model, year (optional), nickname (optional), photo(s).
+- **Cars [Decided]:** users can add **multiple cars**, each with **one photo** **[Decided]**. Each trip is assigned to a car (default car pre-selected at Start). Each user can have a max of 3 cars.
+- **Car fields [Claude's call]:** make, model, year (optional), nickname (optional), one photo.
+- **Photo storage [Decided]:** Supabase Storage (1 GB free) for now; upgrade or move when it nears full.
 - **Car photo appears on [Decided]:** profile page and trip cards.
 - **Photo handling [Claude's call]:** resized/compressed on the phone (~1280 px, ~200–300 KB) before upload, to fit the 1 GB free storage.
 
 ### 6.6 Accounts, privacy & compliance
 
 - Sign-in: Google + email/password. **[Decided]**
+- **Email sending service [Open]:** Supabase's built-in email only reaches team addresses. A sending service (e.g. a domain + Resend, or Brevo) must be chosen before the closed test (~week 10).
 - **In-app account deletion** and a web link to request deletion: required by Google Play. Deleting an account deletes trips, cars, photos and posts. **[Claude's call: posts deleted, not anonymised]**
 - **Privacy policy** (hosted web page) covering location data, analytics, crash reporting, PDPA rights. Required by Google Play. Founder to review; Claude drafts.
 - **Google Play forms:** Data Safety form, foreground-service (location) declaration, location permission justification, content rating, UGC policy.
@@ -191,7 +193,7 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 
 **Repository layout [Claude's call]:**
 ```
-/app            Expo mobile app (TypeScript)
+/mobile         Expo mobile app (TypeScript); renamed from /app to avoid a confusing app/app/ path with Expo Router
 /supabase       database migrations, Row Level Security policies, edge functions
 /docs           design docs, privacy policy draft, store listing text
 CLAUDE.md       instructions for Claude Code
