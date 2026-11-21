@@ -1,6 +1,6 @@
 # OVERTAKE: Version 1 Design
 
-**Status:** Draft for approval
+**Status:** Approved by founder (2026-11-21)
 **Date:** 2026-11-21
 **Scope:** First public Android release (target: ~3 months from start of build)
 
@@ -42,7 +42,7 @@ OVERTAKE is "Strava for car users": a mobile app that records a user's car trips
 - **Leaderboards that reward speed.** Leaderboards must never rank by speed. **[Decided]** Top speed may appear on a user's own trip card. **[Decided]**
 - **Unreliable recording:** trips that silently stop recording, or stats that are obviously wrong (e.g. 400 km/h spikes). This destroys trust in the core feature.
 - **Battery drain** so heavy that users uninstall.
-- **Leaking where users live or work** through route maps.
+- **Leaking where users live or work** through in-app data (trips and routes are private to their owner). Shared trip cards show the full route line by founder's choice; see Risks.
 - **Running costs above RM0/month** before launch. **[Decided: free tiers only]**
 
 ## 3. Constraints
@@ -81,8 +81,8 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 | Backend | Supabase: Postgres database, Auth, Storage (photos), Row Level Security, Edge Functions | Free: 500 MB DB, 1 GB file storage, 50K monthly active users; pauses after ~7 days without DB activity |
 | Sign-in | Supabase Auth: Google sign-in + email/password. Apple sign-in added with iOS. **[Decided]** | Free |
 | Maps | Google Maps SDK for Android (`react-native-maps`) | Mobile native maps listed at USD 0. Billing card required on Google Cloud. **Budget alert at USD 1 + caps on paid APIs.** **[Decided]** |
-| Place names | Android's on-device geocoder (via `expo-location`), not Google's paid Geocoding API | Free |
-| Trip card image | Rendered on the phone (`react-native-view-shot`), shared via Android share sheet | Free |
+| Place names (in-app trip history only) | Android's on-device geocoder (via `expo-location`), not Google's paid Geocoding API | Free |
+| Trip card image | Route drawn as a line with `react-native-svg` (no map tiles), card captured on the phone with `react-native-view-shot`, shared via Android share sheet | Free; no Google Maps usage |
 | Usage analytics | PostHog (React Native SDK), EU or US cloud **[Claude's call]** | Free: 1M events/month. Session replay off. |
 | Crash reporting | Sentry (React Native SDK) | Free: developer tier |
 | Builds/releases | EAS Build → `.aab` → Google Play Console | Free tier (queued builds) |
@@ -116,7 +116,7 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 4. Raw points are deleted from the phone after a successful upload, but kept for 7 days for debugging during closed testing.
 - Why: 1 hour of raw GPS ≈ 3,600 points. Storing raw points on the server would fill the free 500 MB database within weeks. A simplified route keeps each trip to a few KB.
 
-**Trip record fields:** id, user, car, start/end time, duration, moving time, distance, average speed, top speed, simplified route, start/end place names, qualifies-for-leaderboard flag, created/updated timestamps.
+**Trip record fields:** id, user, car, start/end time, duration, moving time, distance, average speed, top speed, simplified route, start/end area names (shown only in the owner's in-app trip history **[Claude's call]**), qualifies-for-leaderboard flag, created/updated timestamps.
 
 **Trip history:** list of the user's trips (newest first) with a map + stats detail screen. Users can delete their own trips.
 
@@ -133,9 +133,12 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 ### 6.3 Shareable trip cards
 
 - Generated on the phone from a finished trip; shared via Android's share menu (Instagram, WhatsApp, TikTok, etc.) or saved to gallery.
-- **Content [Decided]:** route map, stats including top speed, the car's photo.
-- **Privacy [Decided]:** the first and last ~500 m of the route are hidden on the card. **[Claude's call: 500 m]**
-- **Content details [Claude's call]:** distance, duration, average speed, top speed, date, start → end place names, car name + photo, OVERTAKE branding.
+- **Route line, not a map [Decided]:** like a Strava story, the card shows only the route as a line on a 2D plane, with no map, streets or labels behind it. The line is drawn from the stored simplified route, scaled and centred to fit the card.
+- **Full route line [Decided]:** the line is not trimmed at the start/end.
+- **No place names on the card [Decided].**
+- **Content [Decided]:** route line, stats including top speed, the car's photo.
+- **Content details [Claude's call]:** distance, duration, average speed, top speed, date, car name + photo, OVERTAKE branding.
+- **Map usage:** Google Maps is used only inside the app (live drive screen, the owner's trip detail screen), never on the shareable card.
 - **Visual design [Decided: Claude proposes, founder approves]:** before any UI is built, Claude proposes a simple design system (colours, Google Fonts, core components) with mockups of key screens, including the trip card. The founder picks/adjusts.
 
 ### 6.4 Community (posts / forum) [Decided: posts/forum]
@@ -229,6 +232,7 @@ Founder actions with lead time: decide the Android app ID before ~week 10; creat
 | Closed-test requirement delays launch | Recruit testers early; start closed test by week 10 |
 | Forum abuse / Google Play UGC rejection | Terms, report/block, moderation via dashboard, rate limits |
 | Top speed on shareable cards encourages speeding (legal/reputational) | Accepted by founder; leaderboards never use speed |
+| Full, untrimmed route line on shared cards could let people who know the area recognise a user's home/work from the line's shape | Accepted by founder; no map or place names on the card reduces it. Trimming can be added later as a setting. |
 | 3-month timeline slips | Side features already deferred; forum is the most cuttable scope if needed |
 
 ## 11. Left to the builder
