@@ -2,46 +2,53 @@
 
 Instructions for Claude Code when working in this repository. Claude reads this file automatically at the start of every session.
 
-<!--
-HOW TO USE THIS FILE
-- Fill in each section in your own words. Bullet points are fine.
-- Delete any section you don't need, and add your own.
-- Lines inside these comment markers are hints for you. Claude reads them too, so delete each hint once you've filled in its section.
-- Keep it short and specific. "Ask before adding a new library" works better than "be careful".
--->
-
 ## About this project
+This project is meant to develop and launch a mobile background GPS tracking app. The app is meant to track a user's car trip data, users can then share trip cards that record their driving statistics. You can think of it as 'Strava' for car users.
 
-<!-- What OVERTAKE is, who it's for, and what matters most right now. -->
+Pre-launch
+- focus on building the app
+
+Post-launch
+- improvements for the app itself and profitability
+- analytics from user-generated app data
 
 ## How to think
 
-<!-- How you want Claude to reason: e.g. challenge my assumptions, flag legal/safety risks, prefer simple over clever. -->
+Evaluate the feasibility of what has to be executed. You may flag legal/safety risks, but your main focus is on the feasibility of executing what I request of you.
 
 ## When to ask questions
 
-<!-- When Claude must stop and ask vs. when it can decide and tell you afterwards. -->
+Format of questions: Pop-up cards that have multiple choice answers (a, b, c, d (others, please state)).
+When there is ambiguity or doubt, please ask. Do not make assumptions.
 
 ## How to execute
 
-<!-- How work should be done: e.g. plan first, small steps, test on device before committing, how to report progress. -->
+Plan first, tell me how you came to this conclusion (e.g. what considerations were made?). Then get my approval for execution.
 
 ## Coding standards
 
-<!-- Language/style rules, naming, comments, testing expectations, things that make the reviewer's life easier. -->
+Build the code with 3 principles:
+1. quality
+2. security
+3. optimisation for app performance, battery optimisation, GPS-tracking accuracy, and data accuracy
 
-## Product rules
-
-<!-- Decisions that must never be broken: e.g. leaderboards never rank by speed; trip cards may show top speed. -->
+When you come across an issue. Try to fix it first (3 attempts max). If unable to solve, present me with the issue and an alternative solution.
 
 ## Git & releases
 
-<!-- Branching, commit messages, when to push, who approves merges. -->
+Ask for permission before commiting.
 
 ## How to talk to me
 
-<!-- Tone, length, level of technical detail, language. -->
+Level of technical language: medium.
+For context, I have no coding background but I am willing to understand new terms, concepts and learn.
+
+Format of response:
+1. What have you done
+2. What do you need me to do
+3. (optional) What is the current issue?
+4. (optional) Things to take note of / add-ons at your own discretion
 
 ## Never do
 
-<!-- Hard limits: e.g. never commit secrets, never delete data without asking. -->
+Never delete data without asking.
