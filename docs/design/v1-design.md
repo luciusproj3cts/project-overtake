@@ -13,7 +13,7 @@ Markers used in this document:
 
 ## 1. What OVERTAKE is and why
 
-OVERTAKE is "Strava for car users": a mobile app that records a user's car trips, shows their driving stats, ranks them on leaderboards, and lets them share good-looking trip cards to social media. It also has a community forum for car enthusiasts.
+OVERTAKE is "Strava for car users": a mobile app that records a user's car trips, shows their driving stats, ranks them on leaderboards, and lets them share good-looking trip cards to social media. Direct competitors are Enroad and Wheelz. It also has a community forum for car enthusiasts.
 
 **Why now:** the team wants to validate demand with a real product before committing to company registration, monetisation, or investment. Version 1 must be good enough that people keep using it, and must collect the data needed to make later decisions.
 
@@ -156,7 +156,7 @@ Reasoning: iOS is planned (rules out C); the founder's workflow already assumes 
 
 - **Profile:** display name, unique username, profile photo (optional), stats summary (total km, total trips).
 - **Visibility [Decided: public profile, private trips]:** other users (e.g. tapping a name on the leaderboard or forum) see display name, username, profile photo, cars, and total km/trips. Individual trips and routes are private to the owner; they only leave the app when the user shares a trip card.
-- **Cars [Decided]:** users can add **multiple cars**, each with photos. Each trip is assigned to a car (default car pre-selected at Start).
+- **Cars [Decided]:** users can add **multiple cars**, each with photos. Each trip is assigned to a car (default car pre-selected at Start). Each user can have a max of 3 cars.
 - **Car fields [Claude's call]:** make, model, year (optional), nickname (optional), photo(s).
 - **Car photo appears on [Decided]:** profile page and trip cards.
 - **Photo handling [Claude's call]:** resized/compressed on the phone (~1280 px, ~200–300 KB) before upload, to fit the 1 GB free storage.
