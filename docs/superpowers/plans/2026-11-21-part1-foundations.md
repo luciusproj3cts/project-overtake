@@ -41,12 +41,20 @@
 
 Claude walks the founder through each item live; each ends with a check.
 
-- [ ] **Step 1:** Install Node.js LTS, Git for Windows, and the Claude desktop app (Claude Code). Check: `node -v` and `git --version` print versions.
-- [ ] **Step 2:** Clone `luciusproj3cts/project-overtake` to a folder on the PC and open it in Claude Code. Check: `git status` shows branch `main`.
-- [ ] **Step 3:** On the Android phone, enable Developer options → USB debugging. Check: phone is visible when plugged in (Claude confirms with `adb devices` once tools are installed in Task 1).
-- [ ] **Step 4:** Create free accounts: Expo (expo.dev), Supabase, Sentry, PostHog (EU or US cloud). Check: founder can log in to each.
-- [ ] **Step 5:** In Supabase, create project `overtake-dev`, region Southeast Asia (Singapore). Save the database password in a password manager. Check: project dashboard opens.
-- [ ] **Step 6:** Create a Google Cloud project `overtake`, configure the OAuth consent screen (External, app name OVERTAKE). OAuth clients are created in Task 7. Check: consent screen saved.
+- [x] **Step 1:** Install Node.js LTS, Git for Windows, and the Claude desktop app (Claude Code). Check: `node -v` and `git --version` print versions.
+- [x] **Step 2:** Clone `luciusproj3cts/project-overtake` to a folder on the PC and open it in Claude Code. Check: `git status` shows branch `main`.
+- [x] **Step 3:** On the Android phone, enable Developer options → USB debugging. Check: phone is visible when plugged in (Claude confirms with `adb devices` once tools are installed in Task 1).
+- [x] **Step 4:** Create free accounts: Expo (expo.dev), Supabase, Sentry, PostHog (EU or US cloud). Check: founder can log in to each.
+- [x] **Step 5:** In Supabase, create project `overtake-dev`, region Southeast Asia (Singapore). Save the database password in a password manager. Check: project dashboard opens.
+- [x] **Step 6:** Create a Google Cloud project `overtake`, configure the OAuth consent screen (External, app name OVERTAKE). OAuth clients are created in Task 7. Check: consent screen saved.
+
+**Task 0 record (completed 2026-11-23):**
+- PC: Node.js v26.13.1 LTS, Git 2.56.1, Android Platform Tools (adb 1.0.41) installed via winget. Repo cloned to `%USERPROFILE%\dev\project-overtake`.
+- Phone: Google Pixel 9a, USB debugging on; `adb devices` lists it as `device` over USB.
+- Expo: CLI logged in as `lucius.proj3cts` (the account can also act for `bamboo-proj3cts`; which one owns the EAS project is decided in Task 1).
+- Sentry and PostHog: **US** data region (founder's decision; replaces "EU or US" above and the [Claude's call] in the design doc §5).
+- Supabase: org `BAMBOO`, project `overtake-dev`, ref `npklhwnolrenmkwmlowe`, region `ap-southeast-1`, Free plan. An older Tokyo project `OVERTAKE` was deleted with the founder's approval, so the second free slot is open for production. DB password is stored outside the repo at `%USERPROFILE%\overtake-secrets\supabase-db-password.txt` (and in the founder's password manager); never commit it.
+- Google Cloud: project `overtake`, Google Auth Platform: app name OVERTAKE, audience External, status Testing, founder's Gmail as support/contact email and test user. Free Trial credit active (90 days); not upgraded. User support email can be changed under Branding before launch.
 
 ### Task 1: App skeleton, tooling and first dev build
 
