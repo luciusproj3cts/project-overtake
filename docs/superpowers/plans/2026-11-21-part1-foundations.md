@@ -14,7 +14,7 @@
 
 ## Global Constraints
 
-- Founder rules (`CLAUDE.md`): **ask the founder before every commit**; work on branch `feature/part1-foundations`; max 3 fix attempts per problem, then report the issue with an alternative; replies follow the founder's response format.
+- Founder rules (`CLAUDE.md`): **commit routine work without asking; ask the founder before large changes** (e.g. switching away from Supabase); work on branch `feature/part1-foundations`; max 3 fix attempts per problem, then report the issue with an alternative; replies follow the founder's response format.
 - Platform: Android only. Development build (`expo-dev-client`), never Expo Go.
 - Temporary Android app ID: `com.overtake.dev` (final app ID is **[Open]**, needed before the first Play upload; the Google OAuth Android client must be recreated when it changes).
 - Region: Malaysia, English UI, km and km/h, time zone `Asia/Kuala_Lumpur`.
@@ -71,7 +71,7 @@ expect(screen.getByText('OVERTAKE')).toBeTruthy();
 - [ ] **Step 4: Implement** `app/index.tsx` showing the text `OVERTAKE`.
 - [ ] **Step 5: Run** `npm test && npm run typecheck && npm run lint`. Expected: all pass, 0 errors.
 - [ ] **Step 6: Build and install the dev client:** `npx eas-cli build -p android --profile development`, install the APK on the phone, run `npm start`, open the app. Expected: phone shows `OVERTAKE`; editing the text on the PC updates the phone within seconds.
-- [ ] **Step 7: Ask founder permission, then commit** `chore: scaffold Expo app with tooling and dev build`.
+- [ ] **Step 7: Commit** `chore: scaffold Expo app with tooling and dev build`.
 
 ### Task 2: Design tokens, fonts and core UI components
 
@@ -122,7 +122,7 @@ expect(screen.getByText('Username taken')).toBeTruthy();
 - [ ] **Step 3: Implement** tokens (exact hexes from design-system.md), `contrastRatio` (WCAG relative-luminance formula), fonts via `expo-font`, and the four components.
 - [ ] **Step 4: Run** `npm test`. Expected: PASS.
 - [ ] **Step 5: Check on phone:** temporary preview of all components on `app/index.tsx` matches the mockup style (square corners, thick borders, lime primary button with hard shadow). Founder confirms.
-- [ ] **Step 6: Ask founder permission, then commit** `feat: design tokens, fonts and core UI components`.
+- [ ] **Step 6: Commit** `feat: design tokens, fonts and core UI components`.
 
 ### Task 3: Five-tab app shell
 
@@ -145,7 +145,7 @@ expect(screen.getAllByRole('tab')).toHaveLength(5); // each ≥ 56 px tall
 - [ ] **Step 2: Run** the test. Expected: FAIL.
 - [ ] **Step 3: Implement** the tab layout and `TabBar` (5 equal cells, 2 px ink dividers, 3 px top border, 11 px Space Mono bold labels, active cell lime).
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: all five tabs switch, labels fit without truncation.
-- [ ] **Step 5: Ask founder permission, then commit** `feat: five-tab app shell`.
+- [ ] **Step 5: Commit** `feat: five-tab app shell`.
 
 ### Task 4: Database schema, security rules and database tests
 
@@ -191,7 +191,7 @@ A uploads a 2 MB file → error; uploads 'image/png' → error
 - [ ] **Step 2: Run** `npm run test:db`. Expected: FAIL (tables don't exist).
 - [ ] **Step 3: Write the three migrations** to produce exactly the interfaces above; apply with `npx supabase db push`.
 - [ ] **Step 4: Run** `npm run test:db`. Expected: PASS; test users cleaned up afterwards.
-- [ ] **Step 5: Ask founder permission, then commit** `feat(db): profiles, cars, storage with RLS and tests`.
+- [ ] **Step 5: Commit** `feat(db): profiles, cars, storage with RLS and tests`.
 
 ### Task 5: Supabase client, session and routing gate
 
@@ -224,7 +224,7 @@ readEnv({}) throws 'Missing env: EXPO_PUBLIC_SUPABASE_URL'
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** the modules; root layout redirects to `/(auth)/sign-in`, `/(onboarding)/profile-setup` or `/(tabs)/drive` based on `resolveRoute`; `'loading'` shows a paper screen with the wordmark.
 - [ ] **Step 4: Run** `npm test`. Expected: PASS.
-- [ ] **Step 5: Ask founder permission, then commit** `feat: supabase client, session and routing gate`.
+- [ ] **Step 5: Commit** `feat: supabase client, session and routing gate`.
 
 ### Task 6: Email sign-up, sign-in and password reset
 
@@ -256,7 +256,7 @@ signUpWithEmail with mocked supabase error → { ok:false, message: mapped }   /
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** the service, validation and three screens (design-system inputs and buttons; sign-in links to sign-up and forgot-password; buttons show `loading` and can't be double-submitted).
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: sign up with the founder's own email (Supabase built-in email only delivers to team addresses; the sending service is **[Open]** until before the closed test), confirm, sign in, sign out.
-- [ ] **Step 5: Ask founder permission, then commit** `feat(auth): email sign-up, sign-in and reset`.
+- [ ] **Step 5: Commit** `feat(auth): email sign-up, sign-in and reset`.
 
 ### Task 7: Google sign-in
 
@@ -281,7 +281,7 @@ Play Services missing → { ok:false, message:'Google sign-in is not available o
 - [ ] **Step 3: Run** the test. Expected: FAIL.
 - [ ] **Step 4: Implement** `signInWithGoogle`; a cancelled sign-in shows no error.
 - [ ] **Step 5: Rebuild the dev client** (native module added), `npm test`. Expected: PASS. On phone: Google sign-in lands on profile setup for a new account, on DRIVE for an existing one.
-- [ ] **Step 6: Ask founder permission, then commit** `feat(auth): Google sign-in`.
+- [ ] **Step 6: Commit** `feat(auth): Google sign-in`.
 
 ### Task 8: Photo pipeline (pick, compress, upload)
 
@@ -311,7 +311,7 @@ uploadPhoto → storage.upload called with path matching /^USER\/[0-9a-f-]{36}\.
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** the four functions (camera/library permission prompts explain why: "to add a photo of your car").
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: pick a large portrait photo → uploaded file opens upright in the Supabase dashboard, ≤ 400 KB.
-- [ ] **Step 5: Ask founder permission, then commit** `feat(photos): pick, compress and upload pipeline`.
+- [ ] **Step 5: Commit** `feat(photos): pick, compress and upload pipeline`.
 
 ### Task 9: Profile setup and profile tab
 
@@ -344,7 +344,7 @@ createProfile success → profile with camelCase fields
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** the service and screens; setup screen shows live "AVAILABLE / TAKEN" under the username field; on success routes to DRIVE and fires `profile_completed` (Task 11).
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: new account → setup → DRIVE; PROFILE tab shows the entered details; edit display name persists after app restart.
-- [ ] **Step 5: Ask founder permission, then commit** `feat(profile): profile setup, view and edit`.
+- [ ] **Step 5: Commit** `feat(profile): profile setup, view and edit`.
 
 ### Task 10: Cars (add, edit, delete, default, max 3, one photo)
 
@@ -382,7 +382,7 @@ nextDefaultAfterDelete([c1(oldest), c2, c3], c1.id) → c2.id; ([c1], c1.id) →
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** the service and screens: ADD CAR disabled with "MAX 3 CARS" at 3 cars; SAVE disabled while saving (no double insert); car with no photo shows `PhotoBox` labelled "ADD PHOTO"; DELETE asks "Delete this car? This can't be undone." before deleting; default car marked "DEFAULT".
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: add 3 cars with photos, 4th blocked; switch default; edit; delete with confirmation; airplane mode during save → car saved with "ADD PHOTO", retry works once back online.
-- [ ] **Step 5: Ask founder permission, then commit** `feat(cars): manage up to 3 cars with one photo each`.
+- [ ] **Step 5: Commit** `feat(cars): manage up to 3 cars with one photo each`.
 
 ### Task 11: Crash reporting and analytics
 
@@ -410,7 +410,7 @@ initAnalytics() with no key → posthog never constructed; track is a no-op (no 
 - [ ] **Step 2: Run** the tests. Expected: FAIL.
 - [ ] **Step 3: Implement** both modules (PostHog session replay off, autocapture off) and add `track` calls: `signed_up {method}`, `signed_in {method}`, `profile_completed`, `car_added {hasPhoto}`, `car_photo_failed`.
 - [ ] **Step 4: Run** `npm test`. Expected: PASS. On phone: events appear in PostHog Live events without email/username; a test crash (temporary button, removed after) appears in Sentry.
-- [ ] **Step 5: Ask founder permission, then commit** `feat: crash reporting and privacy-safe analytics`.
+- [ ] **Step 5: Commit** `feat: crash reporting and privacy-safe analytics`.
 
 ### Task 12: Part 1 acceptance
 
@@ -420,4 +420,4 @@ initAnalytics() with no key → posthog never constructed; track is a no-op (no 
 - [ ] **Step 1: Run** `npm run typecheck && npm run lint && npm test && npm run test:db`. Expected: 0 errors, all tests pass.
 - [ ] **Step 2: Build** `npx eas-cli build -p android --profile preview` and install. Expected: app works with the PC switched off.
 - [ ] **Step 3: Founder walkthrough on the phone:** email sign-up → profile → 3 cars with photos → 4th blocked → sign out → Google sign-in → offline reopen opens to DRIVE. Each item ticked or reported.
-- [ ] **Step 4: Ask founder permission, then commit** the setup doc; ask whether to open a pull request from `feature/part1-foundations` to `main` for the reviewer.
+- [ ] **Step 4: Commit** the setup doc; ask whether to open a pull request from `feature/part1-foundations` to `main` for the reviewer.
