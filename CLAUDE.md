@@ -36,6 +36,8 @@ When you come across an issue. Try to fix it first (3 attempts max). If unable t
 
 Create a separate branch when testing. Keep separate versions.
 
+Have a subagent review the code you write.
+
 ## Git & releases
 
 Ask for permission before commiting large changes (e.g. changing from Supabase to some other platform).
